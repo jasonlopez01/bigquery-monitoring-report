@@ -48,7 +48,7 @@ These extra steps are all handled via the automated [setup_report_view.sh](./set
 
 
 ## Looker Studio Dashboard
-You can use any BI tool to create your own dashboard using the reporting Views here, or you can create a copy of this [BigQueryMonitoringDashboard](https://lookerstudio.google.com/reporting/da83c07a-5d81-47cd-9f2e-3b11d093358b) template dashboard.
+You can use any BI tool to create your own dashboard using the reporting Views here, or you can create a copy of this [BigQueryMonitoringDashboard](https://lookerstudio.google.com/reporting/da83c07a-5d81-47cd-9f2e-3b11d093358b) template by following the link and specifying your own data sources when prompted.
 
 ![jobs_report1](./static/jobs_report1.png)
 
