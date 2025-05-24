@@ -33,7 +33,8 @@ latest_table_references AS (
     referenced_project_id,
     referenced_dataset_id,
     referenced_table_id,
-    MAX(creation_time) as last_referenced_at
+    MAX(creation_time) as last_referenced_at,
+    COUNT(DISTINCT job_id) as job_count
   FROM referenced_tables
   GROUP BY ALL
 ),
@@ -124,6 +125,7 @@ SELECT
   total_logical_gibs >= 10 AND total_partitions < 1 AS partitioning_recommended,
   latest_table_references.last_referenced_at,
   DATE_DIFF(CURRENT_TIMESTAMP(), latest_table_references.last_referenced_at, DAY) AS days_since_last_referenced,
+  latest_table_references.job_count,
   (
     -- Table not referenced in X days
     DATE_DIFF(CURRENT_TIMESTAMP(), storage_last_modified_time, DAY) >= constants.clean_up_table_warning_threshold_days
