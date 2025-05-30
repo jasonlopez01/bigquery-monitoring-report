@@ -1,0 +1,3 @@
+Run the setup_report_views.sh setup script to specify a desired region and scope (Project or Org), create the necessary views, and then present a link to create your own Looker Dashboard.
+
+`bash setup_report_views.sh`

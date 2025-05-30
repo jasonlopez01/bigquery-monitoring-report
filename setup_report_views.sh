@@ -237,21 +237,19 @@ fi
 # https://developers.google.com/looker-studio/integrate
 LOOKER_TEMPLATE_REPORT_ID="da83c07a-5d81-47cd-9f2e-3b11d093358b"
 
-set f
 CREATE_LOOKER_DASHBOARD_LINK="https://lookerstudio.google.com/reporting/create?\
 c.reportId=${LOOKER_TEMPLATE_REPORT_ID}\
 &c.mode=view\
 &c.explain=true\
 &r.reportName=BigQueryMonitoringDashboardCOPY\
-&ds.*.connector=bigQuery\
-&ds.*.keepDatasourceName=true\
-&ds.*.type=TABLE\
-&ds.*.projectId=${PROJECT_ID}\
-&ds.*.datasetId=${DATASET_ID}\
+&ds.%2A.connector=bigQuery\
+&ds.%2A.keepDatasourceName=true\
+&ds.%2A.type=TABLE\
+&ds.%2A.projectId=${PROJECT_ID}\
+&ds.%2A.datasetId=${DATASET_ID}\
 &ds.storage_source.tableId=${STORAGE_TABLE_ID}\
 &ds.jobs_source.tableId=${JOBS_TABLE_ID}\
 &ds.quotas_source.tableId=${JOB_QUOTA_TABLE_ID}"
-set -f
 
 echo ""
 echo "==========================================================================="

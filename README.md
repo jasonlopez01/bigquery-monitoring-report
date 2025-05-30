@@ -2,7 +2,7 @@
 
 A set of SQL View definitions on top of the BigQuery [INFORMATION_SCHEMA](https://cloud.google.com/bigquery/docs/information-schema-intro) views to report on BigQuery cost and performance.
 
-Also includes a template Looker Studio Dashboard - [BigQueryMonitoringDashboard](https://lookerstudio.google.com/reporting/da83c07a-5d81-47cd-9f2e-3b11d093358b)
+Also includes a template Looker Studio Dashboard - [BigQueryMonitoringDashboard](https://lookerstudio.google.com/reporting/da83c07a-5d81-47cd-9f2e-3b11d093358b/preview)
 
 
 ## Key Features
@@ -17,8 +17,10 @@ Also includes a template Looker Studio Dashboard - [BigQueryMonitoringDashboard]
 
 ## Setup Instructions!
 You can click the below button to start walkthrough script in the GCP Cloud Shell that will ask for the desired region and scope (Project or Org), create the necessary views, and then present a link to create your own Looker Dashboard connected to those reporting views.
+Or you can run the setup script in your local environment:
+- `bash setup_report_views.sh`
 
-[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?ephemeral=true&cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fjasonlopez01%2Fbigquery-monitoring-report&cloudshell_open_in_editor=setup_report_views.sh)
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.svg)](https://shell.cloud.google.com/cloudshell/editor?ephemeral=true&show=terminal&cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fjasonlopez01%2Fbigquery-monitoring-report&cloudshell_print=static/cloudshell_intro.txt)
 
 
 #### Manual setup
@@ -48,7 +50,7 @@ These extra steps are all handled via the automated [setup_report_view.sh](./set
 
 
 ## Looker Studio Dashboard
-You can use any BI tool to create your own dashboard using the reporting Views here, or you can create a copy of this [BigQueryMonitoringDashboard](https://lookerstudio.google.com/reporting/da83c07a-5d81-47cd-9f2e-3b11d093358b) template by following the link and specifying your own data sources when prompted.
+You can use any BI tool to create your own dashboard using the reporting Views here, or you can create a copy of this [BigQueryMonitoringDashboard](https://lookerstudio.google.com/reporting/da83c07a-5d81-47cd-9f2e-3b11d093358b/preview) template by following the link and specifying your own data sources when prompted.
 
 ![jobs_report1](./static/jobs_report1.png)
 
