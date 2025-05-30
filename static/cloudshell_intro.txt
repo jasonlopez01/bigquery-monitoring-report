@@ -1,4 +1,6 @@
 
+=======================================================================================================================
+
 Run the setup_report_views.sh setup script to:
     1. Specify a desired region and scope (Project or Org)
     2. Create the necessary views
@@ -6,3 +8,6 @@ Run the setup_report_views.sh setup script to:
 
 Run below command in the Cloud Shell:
 `bash setup_report_views.sh`
+
+=======================================================================================================================
+
