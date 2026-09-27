@@ -13,17 +13,6 @@ and then creating the necessary BigQuery Views for a BigQuery Cost and Performan
 echo "==========================================================================="
 
 #########################################################################################################
-# Helper functions
-#########################################################################################################
-url_encode() {
-    local text="$1"
-    printf '%s' "$text" | xxd -p -c 1 | while read -r hex; do
-        printf '%%%s' "$hex"
-    done
-    printf '\n'
-}
-
-#########################################################################################################
 # Get Project ID
 #########################################################################################################
 
@@ -61,6 +50,10 @@ select REGION in "us" "eu"; do
             ;;
     esac
 done
+
+
+# Uppercased region, for the region-qualified console job links (bash 3.2 safe)
+REGION_UPPER=$(printf '%s' "${REGION}" | tr '[:lower:]' '[:upper:]')
 
 
 #########################################################################################################
@@ -154,6 +147,7 @@ echo "⏳ Creating View '${JOBS_TABLE_REF}' ..."
 JOBS_SQL=$(cat ./sql/bigquery_jobs.sql)
 JOBS_SQL="${JOBS_SQL//INFO_SCHEMA_JOBS_REF/$INFO_SCHEMA_JOBS_REF}"
 JOBS_SQL="${JOBS_SQL//INFO_SCHEMA_TABLE_STORAGE_REF/$INFO_SCHEMA_TABLE_STORAGE_REF}"
+JOBS_SQL="${JOBS_SQL//BQ_JOB_LOCATION/$REGION_UPPER}"
 
 # Create View
 if bq mk --use_legacy_sql=false --view="${JOBS_SQL}" --project_id="${PROJECT_ID}" "${JOBS_TABLE_REF}" ; then

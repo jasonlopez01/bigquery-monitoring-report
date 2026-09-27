@@ -30,9 +30,11 @@ SELECT
       label.key ), ", " ) AS parsed_labels,
   TIMESTAMP_DIFF(end_time, start_time, SECOND) AS duration_seconds,
   COUNT(DISTINCT job_id) OVER (PARTITION BY query) AS recurrence_count,
+  -- NOTE: BQ_JOB_LOCATION is the uppercased region the job ran in (ex. US or EU);
+  -- the console job path is region-qualified, so a mismatch here yields a dead link.
   FORMAT(
     "https://console.cloud.google.com/bigquery?project=%s&j=bq:%s:%s&page=jobresults",
-    project_id, 'US', job_id
+    project_id, 'BQ_JOB_LOCATION', job_id
   ) AS job_link,
   query_info.query_hashes.normalized_literals as query_hash,
 -- NOTE: can reference `region-<REGION (ex. us or eu)>.INFORMATION_SCHEMA.JOBS<_BY_PROJECT or _BY_ORGANIZATION>`

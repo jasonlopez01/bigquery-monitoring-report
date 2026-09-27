@@ -66,7 +66,7 @@ project_copy_job_quotas AS (
     CAST(NULL AS STRING) as table_id,
     project_id as source_ref,
     COUNT(job_id) AS job_count,
-    ROUND(100 * (COUNT(job_id) / daily_quotas.load_job_per_project), 2) as quota_utilization_percent,
+    ROUND(100 * (COUNT(job_id) / daily_quotas.copy_job_per_project), 2) as quota_utilization_percent,
     'project' as quota_scope,
     job_type
   -- NOTE: can reference `region-<REGION, ex. us or eu>.INFORMATION_SCHEMA.JOBS<_BY_PROJECT or _BY_ORGANIZATION>`
@@ -81,7 +81,7 @@ project_copy_job_quotas AS (
     creation_date,
     project_id,
     job_type,
-    daily_quotas.load_job_per_project
+    daily_quotas.copy_job_per_project
 ),
 project_export_job_quotas AS (
   SELECT
@@ -91,7 +91,7 @@ project_export_job_quotas AS (
     CAST(NULL AS STRING) as table_id,
     project_id as source_ref,
     COUNT(job_id) AS job_count,
-    ROUND(100 * (COUNT(job_id) / daily_quotas.load_job_per_project), 2) as quota_utilization_percent,
+    ROUND(100 * (COUNT(job_id) / daily_quotas.export_job_per_project), 2) as quota_utilization_percent,
     'project' as quota_scope,
     job_type
    -- NOTE: can reference `region-<REGION, ex. us or eu>.INFORMATION_SCHEMA.JOBS<_BY_PROJECT or _BY_ORGANIZATION>`
@@ -106,7 +106,7 @@ project_export_job_quotas AS (
     creation_date,
     project_id,
     job_type,
-    daily_quotas.load_job_per_project
+    daily_quotas.export_job_per_project
 )
 
 SELECT

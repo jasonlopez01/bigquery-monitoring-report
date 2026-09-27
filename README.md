@@ -26,7 +26,7 @@ Or you can run the setup script in your local environment:
 #### Manual setup
 If you don't want to use the automated setup script, you can manually create all the reporting Views and then copy the template Looker Studio Dashboard and manually edit it to point to your data.
 - Copy the SQL files in the [sql](./sql) directory.
-- Replace all the templated values in the `FROM` clauses with your desired region and scope (the sql files have notes on what the value should look like). 
+- Replace all the templated placeholder values with your desired region and scope (the sql files have notes on what each value should look like). Most are in the `FROM` clauses; `bigquery_jobs.sql` also has a `BQ_JOB_LOCATION` placeholder for the console deep links, which takes the uppercased region (ex. `US`). 
   - NOTE: If you're doing a manual setup and using the Organization-level scope (all GCP Projects in an Org), there are a couple extra steps noted in the [Organization Scope Additional Notes](#organization-scope-additional-notes) section.
 - Make a copy of the template [BigQueryMonitoringDashboard](https://lookerstudio.google.com/reporting/da83c07a-5d81-47cd-9f2e-3b11d093358b/preview) by following the link, and clicking 'Use my Own Data', then saving the copy.
 - After clicking the link you'll be prompted to specify your data sources.
